@@ -179,7 +179,7 @@ const updateOrder = async (req, res) => {
       if (newQuantity > product.stock)
         return res.status(400).json({ message: `Only ${product.stock} available` });
       order.items[index].quantity = newQuantity;
-      order.items[index].price = product.price;
+      order.items[index].price = product.price *50 ;
       product.stock -= newQuantity;
     }
 
@@ -267,7 +267,7 @@ const userId = req.body.userid;
   line_items: [
     {
       price_data: {
-        currency: 'EGP',
+        currency: 'USD',
         product_data: {
           name: `Order #${order._id}`,
         },
